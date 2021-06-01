@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_controller"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    >
+
+    <TextView
+        android:id="@+id/date_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="November 14"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_general_rectangle"
+        android:backgroundTint="@color/turqoise"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/chat_bubble"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/receiver_bubble"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@id/photo_album_cv"
+        android:layout_alignTop="@id/photo_album_cv"
+        android:layout_alignBottom="@id/time_chat"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="-5dp"
+        />
+
+    <FrameLayout
+        android:id="@+id/photo_album_cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_view"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="4dp"
+        android:visibility="visible">
+        <include
+            android:id="@+id/photo_container"
+            layout="@layout/group_image_chat_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/message_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hello world a"
+        android:layout_below="@id/photo_album_cv"
+        android:layout_alignParentStart="true"
+        android:paddingEnd="5dp"
+        android:paddingStart="0dp"
+        android:textAlignment="textStart"
+        android:textColor="#000"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/time_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15:30"
+        android:layout_alignParentStart="true"
+        android:paddingEnd="5dp"
+        android:paddingStart="0dp"
+        android:layout_marginStart="24dp"
+        android:paddingBottom="8dp"
+        android:layout_below="@id/message_chat"
+        />
+</RelativeLayout>

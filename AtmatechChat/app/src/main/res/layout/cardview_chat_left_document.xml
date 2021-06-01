@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_controller"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    >
+
+    <TextView
+        android:id="@+id/date_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="November 14"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_general_rectangle"
+        android:backgroundTint="@color/turqoise"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/chat_bubble"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/receiver_bubble"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@id/message_chat"
+        android:layout_alignTop="@id/message_chat"
+        android:layout_alignBottom="@id/time_chat"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="-5dp"
+        />
+
+    <ImageView
+        android:id="@+id/img_doc"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_document"
+        android:backgroundTint="@color/greysilver"
+        android:layout_below="@id/date_view"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:id="@+id/file_ext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PDF"
+        android:layout_alignStart="@id/img_doc"
+        android:layout_alignEnd="@id/img_doc"
+        android:layout_alignTop="@id/img_doc"
+        android:layout_alignBottom="@id/img_doc"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/message_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Judul Dokumen"
+        android:layout_below="@id/date_view"
+        android:layout_toEndOf="@id/img_doc"
+        android:layout_marginStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="0dp"
+        android:textAlignment="textStart"
+        android:textColor="#000"
+        />
+
+    <TextView
+        android:id="@+id/time_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15:30"
+        android:layout_alignParentStart="true"
+        android:paddingEnd="5dp"
+        android:paddingStart="0dp"
+        android:layout_marginStart="24dp"
+        android:paddingBottom="8dp"
+        android:layout_below="@id/img_doc"
+        />
+</RelativeLayout>

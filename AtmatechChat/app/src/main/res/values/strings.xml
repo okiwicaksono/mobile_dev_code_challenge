@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Atmatech Chat</string>
+
+    <string-array name="users">
+        <item>A</item>
+        <item>B</item>
+    </string-array>
+</resources>
