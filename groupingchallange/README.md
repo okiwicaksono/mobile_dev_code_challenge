@@ -23,4 +23,4 @@ currently support single filter with given condition in [README.md](https://gith
 
 ## Get a look at the app!
 
-![](./screenshoots/overview.gif)
+![Overview](https://github.com/hamamulfz/mobile_dev_code_challenge/blob/flutter/groupingchallange/screenshots/overview.gif)
