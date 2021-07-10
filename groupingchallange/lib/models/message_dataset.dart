@@ -1,3 +1,6 @@
+import 'package:groupingchallange/constants/enum.dart';
+import 'package:groupingchallange/utils/date_convert.dart';
+
 class MessagesDataset {
   late List<Message> data;
 
@@ -26,6 +29,9 @@ class Message {
   String? body;
   String? attachment;
   late String timestamp;
+  late DateTime datetime;
+  late String date;
+  late String hour;
   late String from;
   late String to;
 
@@ -45,6 +51,9 @@ class Message {
     timestamp = json['timestamp'];
     from = json['from'];
     to = json['to'];
+    date = DateConvert.convertTsToDate(json['timestamp'], TsConvertTo.DATE);
+    hour = DateConvert.convertTsToDate(json['timestamp'], TsConvertTo.HOUR);
+    datetime = DateConvert.convertTsToDateTime(json['timestamp']);
   }
 
   Map<String, dynamic> toJson() {
