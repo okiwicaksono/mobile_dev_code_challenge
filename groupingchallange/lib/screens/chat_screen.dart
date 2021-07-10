@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:bubble/bubble.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
 import 'package:groupingchallange/constants/enum.dart';
 import 'package:groupingchallange/constants/widget_style.dart';
@@ -11,7 +8,6 @@ import 'package:groupingchallange/controllers/message_controller.dart';
 import 'package:groupingchallange/screens/group_screen.dart';
 import 'package:groupingchallange/models/message_dataset.dart';
 import 'package:groupingchallange/utils/date_convert.dart';
-import 'package:intl/intl.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen({Key? key, required this.user}) : super(key: key);
@@ -128,17 +124,6 @@ class ChatScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      // actions: [
-      //   Builder(
-      //     builder: (context) => IconButton(
-      //       icon: Icon(Icons.sort),
-      //       onPressed: () {
-      //         // initLocalFilter();
-      //         Scaffold.of(context).openEndDrawer();
-      //       },
-      //     ),
-      //   ),
-      // ],
       automaticallyImplyLeading: false,
       flexibleSpace: SafeArea(
         child: Container(
@@ -261,7 +246,6 @@ class ChatScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text("Send Message"),
-                // if (user != msg.from) Container(),
                 if (user != msg.from) Text("Save Contact"),
               ],
             ),

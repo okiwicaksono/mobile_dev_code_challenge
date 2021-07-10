@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:groupingchallange/screens/chat_screen.dart';
 import 'package:groupingchallange/controllers/message_controller.dart';
+import 'package:groupingchallange/widgets/sender_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -22,48 +23,22 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Row(),
-          ElevatedButton(
-            onPressed: () {
+          SenderWidget(
+            onTap: () {
               Get.to(() => ChatScreen(
                     user: "A",
                   ));
             },
-            child: Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(width: 3, color: Colors.white)),
-              child: Text(
-                "A",
-                style: TextStyle(
-                  fontSize: 40,
-                ),
-              ),
-            ),
+            title: "A",
           ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-            onPressed: () {
+          SizedBox(height: 20),
+          SenderWidget(
+            onTap: () {
               Get.to(() => ChatScreen(
                     user: "B",
                   ));
             },
-            child: Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(width: 3, color: Colors.white)),
-              child: Text(
-                "B",
-                style: TextStyle(
-                  fontSize: 40,
-                ),
-              ),
-            ),
+            title: "B",
           ),
         ],
       ),

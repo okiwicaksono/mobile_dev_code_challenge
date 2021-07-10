@@ -5,8 +5,6 @@ import 'package:groupingchallange/constants/enum.dart';
 import 'package:groupingchallange/controllers/message_controller.dart';
 import 'package:groupingchallange/models/message_dataset.dart';
 
-import '../constants/widget_style.dart';
-
 class GroupScreen extends StatefulWidget {
   const GroupScreen({Key? key, required this.user}) : super(key: key);
   final String user;
@@ -125,7 +123,6 @@ class _GroupScreenState extends State<GroupScreen>
                     FilterCriteria.REPEATED_FOUR_TIMES) {
                   if (i == 0) {
                     for (var idx = 0; idx < int.parse(category); idx++) {
-                      print(controller.sequence[idx]);
                       imgs.add(
                           controller.filteredMessages.firstWhere((element) {
                         return element.id == controller.sequence[idx];
@@ -148,23 +145,18 @@ class _GroupScreenState extends State<GroupScreen>
                   }
                 } else if (controller.filterSelected ==
                     FilterCriteria.REPEATED_TWO_TIMES) {
-                  print("1");
                   if (i == 0) {
                     for (var idx = 0; idx < int.parse(category); idx++) {
-                      print(controller.sequence[idx]);
                       imgs.add(
                           controller.filteredMessages.firstWhere((element) {
                         return element.id == controller.sequence[idx];
                       }));
                     }
                   } else {
-                    print("3");
                     int lastCount = 0;
                     for (var i2 = 1; i2 <= i; i2++) {
                       lastCount += int.parse(controller.categoryName[i2 - 1]);
                     }
-                    print(lastCount);
-                    print("lastCount");
 
                     for (var idx = lastCount;
                         idx < lastCount + int.parse(controller.categoryName[i]);

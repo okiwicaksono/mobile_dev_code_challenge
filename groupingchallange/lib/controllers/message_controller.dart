@@ -117,7 +117,7 @@ class MessageController extends GetxController {
 
   searchRepeated(type, nums) {
     String? prevType;
-    String? sender;
+    // String? sender;
     int count = 1;
     messages.forEach((element) {
       int id = element.id;
