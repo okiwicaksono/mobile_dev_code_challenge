@@ -8,10 +8,10 @@
 import Foundation
 
 enum Criteria: String {
-    case text
-    case image
-    case document
-    case contact
+    case text = "Pesan Text"
+    case image = "Pesan Gambar"
+    case document = "Pesan Dokumen"
+    case contact = "Pesan Kontak"
 }
 
 

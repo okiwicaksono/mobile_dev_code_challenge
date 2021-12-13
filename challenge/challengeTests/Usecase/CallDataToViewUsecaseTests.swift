@@ -10,18 +10,17 @@ import Foundation
 import XCTest
 
 class CallDataToViewUsecaseTests: XCTestCase {
-    func test_something(){
+    func test_showData_shouldBeNotEmpty(){
         let test = CallDataToViewUsecase(repository: JSONHelper())
         let sut = test.showDataToView()
         print(sut.count)
-        print(sut)
         XCTAssertFalse(sut.isEmpty)
     }
     
     func test_appendImageData_shouldManipulateDataImage(){
         let test = CallDataToViewUsecase(repository: JSONHelper())
         
-        let sut = test.appendDataAttachment(response: JSONHelper().loadJson(filename: "message_dataset"), attachment: "image")
+        let sut = test.appendDataAttachment(response: JSONHelper().loadJson(filename: "message_dataset"), attachment: "image", criteria: Criteria.image)
         
         XCTAssertEqual(sut.count, 4)
         
@@ -29,7 +28,6 @@ class CallDataToViewUsecaseTests: XCTestCase {
         XCTAssertEqual(sut[1].detail.count, 1)
         XCTAssertEqual(sut[2].detail.count, 5)
 
-//
         XCTAssertEqual(sut[0].detail.last?.timestamp, "2018-12-06")
         XCTAssertEqual(sut[1].detail.last?.timestamp, "2018-12-07")
         XCTAssertEqual(sut[2].detail.last?.timestamp, "2018-12-08")
@@ -39,7 +37,7 @@ class CallDataToViewUsecaseTests: XCTestCase {
     func test_appendContactData_shouldManipulateDataImage(){
         let test = CallDataToViewUsecase(repository: JSONHelper())
         
-        let sut = test.appendDataAttachment(response: JSONHelper().loadJson(filename: "message_dataset"), attachment: "contact")
+        let sut = test.appendDataAttachment(response: JSONHelper().loadJson(filename: "message_dataset"), attachment: "contact", criteria: Criteria.contact)
         
         XCTAssertEqual(sut.count, 3)
       
