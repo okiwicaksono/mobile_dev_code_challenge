@@ -14,6 +14,7 @@ class ViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(UINib(nibName: String(describing: CellTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: CellTableViewCell.self))
         data = useCase.showDataToView()
         self.tableView.reloadData()
     }
@@ -26,14 +27,23 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath)
-        cell.textLabel?.text = data[indexPath.row].criteria?.rawValue
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CellTableViewCell.self),for: indexPath) as! CellTableViewCell
+        cell.dateLable.text = self.data[indexPath.row].timestamp.description
+        cell.fromLabel.text = "dari \(self.data[indexPath.row].from!)"
+        cell.title.text = self.data[indexPath.row].criteria?.rawValue
         return cell
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("test \(self.data[indexPath.row].detail) \(self.data[indexPath.row].timestamp)")
+        let vc = DetailViewController()
+        vc.loadViewIfNeeded()
+        if self.data[indexPath.row].detail.isEmpty {
+            vc.detailLabel.text = "\(self.data[indexPath.row])"
+        }else{
+            vc.detailLabel.text = self.data[indexPath.row].detail.description
+        }
+        self.present(vc, animated: true, completion: nil)
     }
 }
