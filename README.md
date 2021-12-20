@@ -70,8 +70,11 @@ Contohnya:
 		* pesan teks
 		* dst..
 	* Penyajian data dalam bentuk list.
-1. *Commit* dan *Push* kode Anda ke repositori baru Anda.
-2. Kirimkan *pull request* kepada kami.
-3. Kami akan melakukan peninjauan terhadap kode Anda dan Anda akan kami hubungi kembali.
+
+![0c7264ef46134c51a4d7bee10af6c063](https://user-images.githubusercontent.com/1400091/146842623-df3a3e93-566c-4816-8158-6271e47599fb.png)
+
+4. *Commit* dan *Push* kode Anda ke repositori baru Anda.
+5. Kirimkan *pull request* kepada kami.
+6. Kami akan melakukan peninjauan terhadap kode Anda dan Anda akan kami hubungi kembali.
 
 *Tantangan ini dibuat oleh [Donn Felker](https://github.com/donnfelker/) di repositori [Example Android Challenge](https://github.com/donnfelker/example-android-challenge) miliknya dan telah diubah sesuai kebutuhan*
