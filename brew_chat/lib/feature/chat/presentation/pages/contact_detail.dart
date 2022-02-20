@@ -12,7 +12,7 @@ class ContactDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Image Detail"),
+        title: const Text("Contact Detail"),
       ),
       body: ListView.builder(
           itemCount: data.length ,
