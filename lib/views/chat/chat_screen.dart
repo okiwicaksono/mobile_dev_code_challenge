@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:messaging_app/helpers/colors.dart';
 import 'package:messaging_app/helpers/constanta.dart';
-import 'package:messaging_app/helpers/time_converter.dart';
 import 'package:messaging_app/models/chats/message_model.dart';
 import 'package:messaging_app/views/chat/cubits/cubit/get_messages_cubit.dart';
 
@@ -131,8 +130,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget imageWidget(Size size, {bool small = false}){
     return Container(
-      width: small ? size.width/6 : size.width/3,
-      height: small? size.width/8 : size.width/4,
+      width: small ? size.width/5.5 : size.width/3,
+      height: small? size.width/7 : size.width/4,
       decoration: BoxDecoration(
         color: colorWhite,
         // borderRadius: BorderRadius.circular(space2)
@@ -147,6 +146,7 @@ class _ChatScreenState extends State<ChatScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         messages.length>1? Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
