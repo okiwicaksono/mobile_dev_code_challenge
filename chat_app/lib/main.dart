@@ -113,6 +113,7 @@ class MessageList extends StatelessWidget {
         print('---');
         print(messageList[index].attachment);
         print(messageList[index].body);
+        print(messageList[index].id);
         print(messageList[index].dateSend);
         print('---');
 
@@ -143,18 +144,12 @@ class MessageList extends StatelessWidget {
                         messageList[i].dateSend.day &&
                     messageList[i].dateSend.month ==
                         messageList[i].dateSend.month &&
-                    messageList[i].attachment == messageList[i].attachment) {
+                    messageList[i].attachment == 'image') {
                   group = true;
                   groupLength++;
                 }
               }
             }
-
-            child = Container(
-              height: 100,
-              width: 100,
-              color: Colors.grey,
-            );
 
             if (group == true && groupLength == 4) {
               for (var i = index + 4; i < messageList.length; i++) {
@@ -202,6 +197,12 @@ class MessageList extends StatelessWidget {
                   },
                 ),
               );
+            } else {
+              child = Container(
+                height: 100,
+                width: 100,
+                color: Colors.grey,
+              );
             }
           } else {
             child = Container(
@@ -223,22 +224,12 @@ class MessageList extends StatelessWidget {
                         messageList[i].dateSend.day &&
                     messageList[i].dateSend.month ==
                         messageList[i].dateSend.month &&
-                    messageList[i].attachment == messageList[i].attachment) {
+                    messageList[i].attachment == 'contact') {
                   group = true;
                   groupLength++;
                 }
               }
             }
-
-            child = Row(
-              children: const [
-                Icon(Icons.people_outline),
-                SizedBox(
-                  width: 10,
-                ),
-                Text('This is a person'),
-              ],
-            );
 
             if (group == true && groupLength == 2) {
               for (var i = index + 2; i < messageList.length; i++) {
@@ -263,6 +254,16 @@ class MessageList extends StatelessWidget {
                     width: 10,
                   ),
                   Text('More than one person'),
+                ],
+              );
+            } else {
+              child = Row(
+                children: const [
+                  Icon(Icons.people_outline),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('This is a person'),
                 ],
               );
             }

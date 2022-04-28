@@ -102,7 +102,8 @@ class Message {
 }
 
 List<Message> messageList =
-    List<Message>.from(dataList['data'].map((e) => Message.fromMap(e)));
+    List<Message>.from(dataList['data'].map((e) => Message.fromMap(e)))
+      ..sort((a, b) => a.dateSend.compareTo(b.dateSend));
 
 Map<String, dynamic> dataList = {
   "data": [
