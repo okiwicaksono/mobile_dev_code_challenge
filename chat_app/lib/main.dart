@@ -38,141 +38,204 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: ListView.builder(
-          itemCount: messageList.length,
-          itemBuilder: ((context, index) {
-            Widget child;
-            print('---');
-            print(messageList[index].attachment);
-            print(messageList[index].body);
-            print(messageList[index].dateSend);
-            print('---');
-
-            if (messageList[index].attachment == null) {
-              child = Text(messageList[index].body);
-            } else if (messageList[index].attachment == 'document') {
-              child = Row(
-                children: const [
-                  Icon(Icons.file_copy),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('This is a document'),
-                ],
-              );
-            } else if (messageList[index].attachment == 'image') {
-              bool group = false;
-              int groupLength = 0;
-              if ((index + 4) < messageList.length &&
-                  messageList[index].group == false) {
-                for (var i = index; i < (index + 4); i++) {
-                  if (messageList[i].dateSend.day ==
-                          messageList[i].dateSend.day &&
-                      messageList[i].attachment == messageList[i].attachment) {
-                    group = true;
-                    groupLength++;
-                  }
-                }
-              }
-
-              child = Container(
-                height: 100,
-                width: 100,
-                color: Colors.grey,
-              );
-
-              if (group == true && groupLength == 4) {
-                for (var i = index + 1; i < (index + 4); i++) {
-                  messageList[i].group = true;
-                }
-                child = SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 5,
-                      crossAxisSpacing: 5,
-                    ),
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 4,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        color: Colors.grey,
-                      );
-                    },
-                  ),
-                );
-              }
-            } else {
-              bool group = false;
-              int groupLength = 0;
-              if ((index + 2) < messageList.length &&
-                  messageList[index].group == false) {
-                for (var i = index; i < (index + 2); i++) {
-                  if (messageList[i].dateSend.day ==
-                          messageList[i].dateSend.day &&
-                      messageList[i].attachment == messageList[i].attachment) {
-                    group = true;
-                    groupLength++;
-                  }
-                }
-              }
-
-              child = Row(
-                children: const [
-                  Icon(Icons.people_outline),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('This is a person'),
-                ],
-              );
-
-              if (group == true && groupLength == 2) {
-                for (var i = index + 1; i < (index + 2); i++) {
-                  messageList[i].group = true;
-                }
-                child = Row(
-                  children: const [
-                    Icon(Icons.people_alt_outlined),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('More than one person'),
-                  ],
-                );
-              }
-            }
-
-            if (messageList[index].group == true) {
-              return const SizedBox();
-            } else {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    const CircleAvatar(),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: child,
-                    ),
-                  ],
-                ),
-              );
-            }
-          }),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const [
+            Expanded(
+              child: MessageList(),
+            ),
+            NewMessage(),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class NewMessage extends StatelessWidget {
+  const NewMessage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          const SizedBox(
+            width: 30,
+            child: Icon(
+              Icons.attach_file,
+              size: 25,
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                label: const Text('Send message'),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          const SizedBox(
+            width: 30,
+            child: Icon(
+              Icons.person_outline,
+              size: 25,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class MessageList extends StatelessWidget {
+  const MessageList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: messageList.length,
+      itemBuilder: ((context, index) {
+        Widget child;
+        print('---');
+        print(messageList[index].attachment);
+        print(messageList[index].body);
+        print(messageList[index].dateSend);
+        print('---');
+
+        if (messageList[index].attachment == null) {
+          child = Text(messageList[index].body);
+        } else if (messageList[index].attachment == 'document') {
+          child = Row(
+            children: const [
+              Icon(Icons.file_copy),
+              SizedBox(
+                width: 10,
+              ),
+              Text('This is a document'),
+            ],
+          );
+        } else if (messageList[index].attachment == 'image') {
+          bool group = false;
+          int groupLength = 0;
+          if ((index + 4) < messageList.length &&
+              messageList[index].group == false) {
+            for (var i = index; i < (index + 4); i++) {
+              if (messageList[i].dateSend.day == messageList[i].dateSend.day &&
+                  messageList[i].attachment == messageList[i].attachment) {
+                group = true;
+                groupLength++;
+              }
+            }
+          }
+
+          child = Container(
+            height: 100,
+            width: 100,
+            color: Colors.grey,
+          );
+
+          if (group == true && groupLength == 4) {
+            for (var i = index + 1; i < (index + 4); i++) {
+              messageList[i].group = true;
+            }
+            child = SizedBox(
+              height: 200,
+              width: 200,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 5,
+                ),
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Container(
+                    color: Colors.grey,
+                  );
+                },
+              ),
+            );
+          }
+        } else {
+          bool group = false;
+          int groupLength = 0;
+          if ((index + 2) < messageList.length &&
+              messageList[index].group == false) {
+            for (var i = index; i < (index + 2); i++) {
+              if (messageList[i].dateSend.day == messageList[i].dateSend.day &&
+                  messageList[i].attachment == messageList[i].attachment) {
+                group = true;
+                groupLength++;
+              }
+            }
+          }
+
+          child = Row(
+            children: const [
+              Icon(Icons.people_outline),
+              SizedBox(
+                width: 10,
+              ),
+              Text('This is a person'),
+            ],
+          );
+
+          if (group == true && groupLength == 2) {
+            for (var i = index + 1; i < (index + 2); i++) {
+              messageList[i].group = true;
+            }
+            child = Row(
+              children: const [
+                Icon(Icons.people_alt_outlined),
+                SizedBox(
+                  width: 10,
+                ),
+                Text('More than one person'),
+              ],
+            );
+          }
+        }
+
+        if (messageList[index].group == true) {
+          return const SizedBox();
+        } else {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                const CircleAvatar(),
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: child,
+                ),
+              ],
+            ),
+          );
+        }
+      }),
     );
   }
 }
