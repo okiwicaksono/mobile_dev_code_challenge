@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text('This is a person'),
+                    Text('More than one person'),
                   ],
                 );
               }
