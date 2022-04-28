@@ -110,12 +110,6 @@ class MessageList extends StatelessWidget {
       itemCount: messageList.length,
       itemBuilder: ((context, index) {
         Widget child;
-        print('---');
-        print(messageList[index].attachment);
-        print(messageList[index].body);
-        print(messageList[index].id);
-        print(messageList[index].dateSend);
-        print('---');
 
         if (messageList[index].attachment == null) {
           // text message
