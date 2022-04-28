@@ -117,8 +117,10 @@ class MessageList extends StatelessWidget {
         print('---');
 
         if (messageList[index].attachment == null) {
+          // text message
           child = Text(messageList[index].body);
         } else if (messageList[index].attachment == 'document') {
+          // document message
           child = Row(
             children: const [
               Icon(Icons.file_copy),
@@ -129,8 +131,10 @@ class MessageList extends StatelessWidget {
             ],
           );
         } else if (messageList[index].attachment == 'image') {
+          // image message
           bool group = false;
           int groupLength = 0;
+          int groupMore = 0;
           if ((index + 4) < messageList.length &&
               messageList[index].group == false) {
             for (var i = index; i < (index + 4); i++) {
@@ -149,7 +153,15 @@ class MessageList extends StatelessWidget {
           );
 
           if (group == true && groupLength == 4) {
-            for (var i = index + 1; i < (index + 4); i++) {
+            for (var i = index + 2; i < messageList.length; i++) {
+              if (messageList[i].dateSend.day == messageList[i].dateSend.day &&
+                  messageList[i].attachment == 'document') {
+                group = true;
+                groupMore++;
+              }
+            }
+
+            for (var i = index + 1; i < (index + 4 + groupMore); i++) {
               messageList[i].group = true;
             }
             child = SizedBox(
@@ -164,6 +176,18 @@ class MessageList extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context, index) {
+                  if (index == 3 && groupMore > 0) {
+                    return Container(
+                      color: Colors.grey,
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('+$groupMore more..'),
+                        ),
+                      ),
+                    );
+                  }
                   return Container(
                     color: Colors.grey,
                   );
@@ -172,8 +196,10 @@ class MessageList extends StatelessWidget {
             );
           }
         } else {
+          // contact message
           bool group = false;
           int groupLength = 0;
+          int groupMore = 0;
           if ((index + 2) < messageList.length &&
               messageList[index].group == false) {
             for (var i = index; i < (index + 2); i++) {
@@ -196,7 +222,15 @@ class MessageList extends StatelessWidget {
           );
 
           if (group == true && groupLength == 2) {
-            for (var i = index + 1; i < (index + 2); i++) {
+            for (var i = index + 2; i < messageList.length; i++) {
+              if (messageList[i].dateSend.day == messageList[i].dateSend.day &&
+                  messageList[i].attachment == 'document') {
+                group = true;
+                groupMore++;
+              }
+            }
+
+            for (var i = index + 1; i < (index + 2 + groupMore); i++) {
               messageList[i].group = true;
             }
             child = Row(
