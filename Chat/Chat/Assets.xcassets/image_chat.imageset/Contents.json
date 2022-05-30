@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Movie-Genres-Types-of-Movies-List-of-Genres-and-Categories-Header-StudioBinder.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Movie-Genres-Types-of-Movies-List-of-Genres-and-Categories-Header-StudioBinder-1.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Movie-Genres-Types-of-Movies-List-of-Genres-and-Categories-Header-StudioBinder-2.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
