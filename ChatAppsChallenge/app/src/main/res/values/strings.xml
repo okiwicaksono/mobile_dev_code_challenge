@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Chat Apps Challenge</string>
+    <string name="hint_edt_message">Send messages...</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/drawable/bg_incoming_buble.xml" value="0.1485" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/drawable/bg_incoming_buble_rounded.xml" value="0.1485" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/drawable/bg_outgoing_buble.xml" value="0.1485" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/drawable/bg_outgoing_buble_rounded.xml" value="0.1485" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/drawable/bg_rounded_blue.xml" value="0.1" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/drawable/bg_rounded_white.xml" value="0.1" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/item_contact_message.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/item_document_message.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/item_fourormore_image_message.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/item_image_message.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/item_text_message.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/item_three_image_message.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/item_two_image_message.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/view_contact.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/view_document.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/view_four_or_more_image.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/view_more_contact.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/view_three_image.xml" value="0.2" />
+        <entry key="..\:/Users/anang.suwasto/Documents/mobile_dev_code_challenge/ChatAppsChallenge/app/src/main/res/layout/view_two_image.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
