@@ -50,6 +50,7 @@ class MainActivity : DaggerAppCompatActivity() {
             is MainViewState.GetMessagesSuccess -> {
                 viewBinding.swipeRefresh.isRefreshing = false
                 adapter.submitList(state.messages)
+                viewBinding.rvMessages.scrollToPosition(adapter.itemCount - 1)
             }
             is MainViewState.GetMessagesFailed -> {
                 Utils.showErrorSnackBar(this, viewBinding.root, state.msg)
