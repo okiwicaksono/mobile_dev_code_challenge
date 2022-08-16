@@ -78,6 +78,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             binding.itemMsgBody.setGravity(getItem(getAdapterPosition()).getFrom().equals("A") ? Gravity.START : Gravity.END);
             binding.itemMsgDate.setGravity(getItem(getAdapterPosition()).getFrom().equals("A") ? Gravity.START : Gravity.END);
             binding.itemMsgAttachment.setGravity(getItem(getAdapterPosition()).getFrom().equals("A") ? Gravity.START : Gravity.END);
+
+            if (getItem(getAdapterPosition()).getFrom().equals("A")) {
+                binding.itemMsgImageLayoutEnd.setVisibility(View.GONE);
+                binding.itemMsgImageLayout.setVisibility(View.VISIBLE);
+            } else {
+                binding.itemMsgImageLayoutEnd.setVisibility(View.VISIBLE);
+                binding.itemMsgImageLayout.setVisibility(View.GONE);
+            }
         }
     }
 }
