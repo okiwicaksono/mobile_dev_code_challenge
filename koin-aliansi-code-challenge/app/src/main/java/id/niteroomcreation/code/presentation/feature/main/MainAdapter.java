@@ -1,5 +1,6 @@
 package id.niteroomcreation.code.presentation.feature.main;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +72,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
             binding.itemMsgBody.setText(getItem(getAdapterPosition()).getBody());
             binding.itemMsgDate.setText(CommonUtil.dateToStringPattern(new DateTime(Long.parseLong(getItem(getAdapterPosition()).getTimestamp()) * 1000L).toDate()));
-            binding.itemMsgAttachment.setText("This is "+getItem(getAdapterPosition()).getAttachment());
+            binding.itemMsgAttachment.setText("This is " + getItem(getAdapterPosition()).getAttachment());
+
+
+            binding.itemMsgBody.setGravity(getItem(getAdapterPosition()).getFrom().equals("A") ? Gravity.START : Gravity.END);
+            binding.itemMsgDate.setGravity(getItem(getAdapterPosition()).getFrom().equals("A") ? Gravity.START : Gravity.END);
+            binding.itemMsgAttachment.setGravity(getItem(getAdapterPosition()).getFrom().equals("A") ? Gravity.START : Gravity.END);
         }
     }
 }
