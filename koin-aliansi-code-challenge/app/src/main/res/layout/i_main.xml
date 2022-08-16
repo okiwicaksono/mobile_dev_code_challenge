@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/item_msg_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/hide_bottom_view_on_scroll_behavior"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:textColor="@color/light_text_color"
+            android:id="@+id/item_msg_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hide_bottom_view_on_scroll_behavior"
+            app:layout_constraintEnd_toEndOf="@+id/item_msg_date"
+            app:layout_constraintStart_toStartOf="@+id/item_msg_date"
+            app:layout_constraintTop_toBottomOf="@id/item_msg_date" />
+
+
+        <FrameLayout
+            android:id="@+id/item_msg_attachment_layout"
+            android:padding="12dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_msg_body">
+
+
+            <TextView
+                android:id="@+id/item_msg_attachment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name" />
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
