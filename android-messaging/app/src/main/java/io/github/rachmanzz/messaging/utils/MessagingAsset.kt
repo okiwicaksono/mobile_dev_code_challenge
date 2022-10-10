@@ -1,6 +1,8 @@
 package io.github.rachmanzz.messaging.utils
 
 import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.io.IOException
 
 data class MessageItem(
@@ -25,4 +27,13 @@ class MessagingAsset(context: Context, resource: String) {
         } catch (e: IOException) {e.printStackTrace()}
     }
 
+    fun getMessageList (): List<MessageItem>? {
+        val gson = Gson()
+        val type = object : TypeToken<MessageWrapper>(){}.type
+
+        val wrapper: MessageWrapper? = rawJsonString.let {
+            gson.fromJson(it, type)
+        }
+        return wrapper?.data
+    }
 }
