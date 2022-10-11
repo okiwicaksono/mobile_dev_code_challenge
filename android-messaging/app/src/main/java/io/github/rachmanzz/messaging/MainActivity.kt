@@ -66,13 +66,15 @@ class MainActivity : AppCompatActivity() {
                         collection = arrayListOf(outputItem)
                     )
 
+
                     if (finalResultMessage.isNotEmpty()) {
+
 
                         val lastItem = finalResultMessage.last()
                         val lastItemBody: String? = lastItem.collection.last().body
 
                         // attachment not null, not document, attachment is same with last item, date is same with last item, body is null, and sender message same with last item
-                        if (item.attachment != null && item.attachment != "document" && lastItem.attachment == item.attachment && lastItem.txtDate == stringDate && lastItemBody == null && lastItem.from == item.from) {
+                        if (item.attachment != null && item.attachment != "document" && lastItem.attachment == item.attachment && lastItem.txtDate == stringDate && lastItemBody == null && item.body == null && lastItem.from == item.from) {
                             // cache the item
                             cacheMessages.add(collectingMessage)
 
@@ -126,6 +128,7 @@ class MainActivity : AppCompatActivity() {
                                 // clear all cache message
                                 cacheMessages.clear()
                             }
+
 
                             finalResultMessage.add(collectingMessage)
                         }
