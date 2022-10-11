@@ -54,20 +54,39 @@ class MessageAdapter(val context: Context,val data: ArrayList<MessageCollection>
         if (current.attachment == "contact") {
             if (current.collection.size >= 2) {
                 holder.itemWrapper.addView(contact(true))
+                val contactText = textView("Ini kontak beberapa orang")
+                holder.itemWrapper.addView(contactText)
             } else {
                 holder.itemWrapper.addView(contact())
+                val contactText = textView("Ini kontak seseorang")
+                holder.itemWrapper.addView(contactText)
             }
         } else if (current.attachment == "document") {
             holder.itemWrapper.addView(documentView())
+            val contactText = textView("Ini dokumen")
+            holder.itemWrapper.addView(contactText)
         } else if (current.attachment == "image") {
             if (current.collection.size >= 4) {
-                // this collection alwa
                 holder.itemWrapper.addView(groupImage(current.collection))
             } else {
-                holder.itemWrapper.addView(imageView())
+                val lWrapper = LinearLayout(context)
+                lWrapper.layoutParams = linearParam()
+                lWrapper.orientation = LinearLayout.VERTICAL
+
+                current.collection.get(0).body?.apply {
+                    val txt = textView(this)
+                    txt.layoutParams = linearParam(w= LinearLayout.LayoutParams.MATCH_PARENT)
+                    lWrapper.addView(txt)
+                }
+                lWrapper.addView(imageView(300))
+                holder.itemWrapper.addView(lWrapper)
             }
         } else {
-            holder.itemWrapper.addView(textView(current.collection.first().body!!))
+            val myText = textView(current.collection.first().body!!)
+            val param = linearParam(margin = Margin(20))
+            myText.layoutParams = param
+            holder.itemWrapper.addView(myText)
+
         }
     }
 
@@ -93,9 +112,9 @@ class MessageAdapter(val context: Context,val data: ArrayList<MessageCollection>
         return img
     }
 
-    fun imageView (): ImageView {
+    fun imageView (size: Int = 200): ImageView {
         val img = ImageView(context)
-        val param = linearParam(200, 200)
+        val param = linearParam(size, size)
         param.setMargins(0)
         param.layoutDirection = LinearLayout.VERTICAL
         img.layoutParams = param
