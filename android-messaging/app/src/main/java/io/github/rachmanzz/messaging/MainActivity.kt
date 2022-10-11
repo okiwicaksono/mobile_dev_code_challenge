@@ -1,12 +1,16 @@
 package io.github.rachmanzz.messaging
 
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.Log
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.setMargins
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.rachmanzz.messaging.databinding.ActivityMainBinding
@@ -15,10 +19,12 @@ import io.github.rachmanzz.messaging.utils.MessageCollection
 import io.github.rachmanzz.messaging.utils.MessageItemOutput
 import io.github.rachmanzz.messaging.utils.MessagingAsset
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
 
     lateinit var lyManager : RecyclerView.LayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         // recycleView setup
         lyManager = LinearLayoutManager(this)
         binding.messageView.layoutManager = lyManager
-
 
         populateMessages()
     }
@@ -162,12 +167,116 @@ class MainActivity : AppCompatActivity() {
                 startActivity(browserIntent)
             }
             "image" -> {
-                if (item.collection.size>=4) {}
+                if (item.collection.size>=4) {
+                    showImageGroup(item)
+                }
                 else {
                     val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://rachmanzz.github.io/assets/assets/imageic.png"))
                     startActivity(browserIntent)
                 }
             }
+            "contact" -> {
+                if (item.collection.size>=2) {
+                    groupContact(item.collection)
+                }
+                else {
+                    contact(item.collection.first().id)
+                }
+            }
         }
+    }
+
+    private fun imageView (size: Int = 200): ImageView {
+        val img = ImageView(this)
+        val param = linearParam(size, size)
+        param.setMargins(0)
+        param.layoutDirection = LinearLayout.VERTICAL
+        img.layoutParams = param
+
+        img.setImageResource(R.drawable.ic_image_view)
+
+        return img
+    }
+
+    fun itemLinearLayout(): LinearLayout {
+        var iLayout = LinearLayout(this)
+        iLayout.layoutParams = linearParam()
+        iLayout.orientation = LinearLayout.HORIZONTAL
+        return iLayout
+    }
+
+    // for complecated layout, use RecyclerView or similar
+    private fun showImageGroup(item: MessageCollection) {
+        val dialog = AlertDialog.Builder(this)
+        dialog.setTitle("Daftar gambar")
+        dialog.setMessage(null)
+        val sv = ScrollView(this)
+        val lWrapper = LinearLayout(this)
+        lWrapper.layoutParams = linearParam()
+        lWrapper.orientation = LinearLayout.VERTICAL
+
+        val listLayout = arrayListOf<LinearLayout>()
+
+        for ((i, _) in item.collection.withIndex()) {
+            if (i == 0  || (i%2) == 0) {
+                val iLayout = itemLinearLayout()
+                iLayout.addView(imageView())
+                listLayout.add(iLayout)
+            } else {
+                val iLayout = listLayout.last()
+                iLayout.addView(imageView())
+            }
+
+        }
+
+        for (iL in listLayout) {
+            lWrapper.addView(iL)
+        }
+
+        sv.addView(lWrapper)
+        dialog.setView(sv)
+        dialog.show()
+    }
+
+    private fun contact (id: Int) {
+        val dialog = AlertDialog.Builder(this)
+        dialog.setMessage("Kontak pengguna id $id")
+        dialog.show()
+    }
+    private fun groupContact(items: ArrayList<MessageItemOutput>) {
+        val dialog = AlertDialog.Builder(this)
+        val sv = ScrollView(this)
+        val lWrapper = LinearLayout(this)
+        lWrapper.layoutParams = linearParam()
+        lWrapper.orientation = LinearLayout.VERTICAL
+
+        for (item in items) {
+            val text = TextView(this)
+            text.setText("pengguna dengan id ${item.id}")
+            lWrapper.addView(text)
+        }
+        sv.addView(lWrapper)
+
+        dialog.setView(sv)
+
+        dialog.show()
+
+
+
+    }
+
+    fun linearParam (
+        w: Int =LinearLayout.LayoutParams.WRAP_CONTENT,
+        h: Int = LinearLayout.LayoutParams.WRAP_CONTENT,
+        margin: MessageAdapter.Margin = MessageAdapter.Margin(0)
+
+    ): LinearLayout.LayoutParams {
+        val l = LinearLayout.LayoutParams(w, h)
+        val mLeft = if (margin.l != null) margin.l else margin.size
+        val mRight = if (margin.r != null) margin.r else margin.size
+        val mTop = if (margin.t != null) margin.t else margin.size
+        val mBottom = if (margin.b != null) margin.b else margin.size
+        l.setMargins(mLeft!!, mTop!!, mRight!!, mBottom!!)
+        return l
     }
 }
