@@ -33,8 +33,9 @@
                 android:background="@drawable/background_chat_item"
                 android:id="@+id/wrapper_message_item"
                 android:paddingHorizontal="2dp"
+                android:gravity="center_vertical"
                 android:paddingVertical="2dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
             </LinearLayout>
         </LinearLayout>
