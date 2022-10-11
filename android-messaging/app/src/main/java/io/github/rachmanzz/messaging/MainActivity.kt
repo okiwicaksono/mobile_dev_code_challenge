@@ -253,8 +253,10 @@ class MainActivity : AppCompatActivity() {
         for (item in items) {
             val text = TextView(this)
             text.setText("pengguna dengan id ${item.id}")
+            text.setPadding(10, 10, 10, 10)
             lWrapper.addView(text)
         }
+        lWrapper.setPadding(10, 10, 10, 10)
         sv.addView(lWrapper)
 
         dialog.setView(sv)
