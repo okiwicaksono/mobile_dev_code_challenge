@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun populateMessages () {
-        val messageAsset = MessagingAsset(this, "messagedataset2.json")
+        val messageAsset = MessagingAsset(this, "messagedataset.json")
 
         messageAsset.getMessageList()?.apply {
             val messageItemSorted = this.sortedBy { it.timestamp }
