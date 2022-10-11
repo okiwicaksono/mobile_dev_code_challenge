@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.rachmanzz.messaging.R
 
-class MessageAdapter(val context: Context,val data: ArrayList<MessageCollection>) : RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
+class MessageAdapter(val context: Context,val data: ArrayList<MessageCollection>, val clickListener: (position: Int) -> Unit) : RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val container = view.findViewById<LinearLayout>(R.id.container_layout)
@@ -87,6 +87,10 @@ class MessageAdapter(val context: Context,val data: ArrayList<MessageCollection>
             myText.layoutParams = param
             holder.itemWrapper.addView(myText)
 
+        }
+
+        if (current.attachment != null) {
+            holder.itemWrapper.setOnClickListener { clickListener(position) }
         }
     }
 

@@ -1,10 +1,12 @@
 package io.github.rachmanzz.messaging
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.rachmanzz.messaging.databinding.ActivityMainBinding
@@ -12,9 +14,8 @@ import io.github.rachmanzz.messaging.utils.MessageAdapter
 import io.github.rachmanzz.messaging.utils.MessageCollection
 import io.github.rachmanzz.messaging.utils.MessageItemOutput
 import io.github.rachmanzz.messaging.utils.MessagingAsset
-import org.json.JSONArray
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -148,7 +149,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showMessage(messages: ArrayList<MessageCollection>) {
-        val adapter = MessageAdapter(this, messages)
+        val adapter = MessageAdapter(this, messages) {
+            itemClicked(messages.get(it))
+        }
         binding.messageView.adapter = adapter
+    }
+
+    private fun itemClicked (item: MessageCollection) {
+        when(item.attachment) {
+            "document" -> {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://rachmanzz.github.io/assets/assets/example.pdf"))
+                startActivity(browserIntent)
+            }
+            "image" -> {
+                if (item.collection.size>=4) {}
+                else {
+                    val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://rachmanzz.github.io/assets/assets/imageic.png"))
+                    startActivity(browserIntent)
+                }
+            }
+        }
     }
 }
