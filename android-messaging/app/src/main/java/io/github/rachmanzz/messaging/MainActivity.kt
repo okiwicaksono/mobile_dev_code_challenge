@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun populateMessages () {
+        // if need to check how the image group work, please change json resource to messagedataset2.json
         val messageAsset = MessagingAsset(this, "messagedataset.json")
 
         messageAsset.getMessageList()?.apply {
