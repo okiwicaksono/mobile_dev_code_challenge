@@ -52,8 +52,6 @@ class MainActivity : AppCompatActivity() {
 
 
             try {
-                Toast.makeText(applicationContext, "size  ${messageItemSorted.size}", Toast.LENGTH_SHORT).show()
-
                 var i = 0
                 for (item in messageItemSorted) {
                     val timestamp: Long = item.timestamp.toLong() * 1000
@@ -90,8 +88,6 @@ class MainActivity : AppCompatActivity() {
                                 // review cache if not empty
                                 if (cacheSize >= 1) {
                                     val cacheAttachment = cacheMessages.last().attachment
-                                    Log.i("AttactSize", "$cacheAttachment: size is ${cacheMessages.size}")
-
 
                                     // check cacheAttachment is image & size same or more then 4 item
                                     // or attachment is contact & size same or more then 2 item
@@ -115,7 +111,6 @@ class MainActivity : AppCompatActivity() {
                             // review cache if not empty
                             if (cacheSize >= 1) {
                                 val cacheAttachment = cacheMessages.last().attachment
-                                Log.i("AttactSize", "$cacheAttachment: size is ${cacheMessages.size}")
                                 
 
                                 // check cacheAttachment is image & size same or more then 4 item
@@ -141,7 +136,6 @@ class MainActivity : AppCompatActivity() {
 
 
                     } else {
-                        Toast.makeText(applicationContext, "id: ${i}", Toast.LENGTH_SHORT).show()
                         finalResultMessage.add(collectingMessage)
                     }
                     i++

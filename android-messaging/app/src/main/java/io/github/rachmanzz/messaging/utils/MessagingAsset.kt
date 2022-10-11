@@ -27,7 +27,6 @@ class MessagingAsset(context: Context, resource: String) {
             rawJsonString = context.assets.open(resource).bufferedReader().use{ it.readText() }
         } catch (e: IOException) {
             e.printStackTrace()
-            Log.i("unable", "unable read the doc")
         }
     }
 
