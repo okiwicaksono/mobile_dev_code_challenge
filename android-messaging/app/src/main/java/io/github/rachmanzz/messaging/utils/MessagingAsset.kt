@@ -1,6 +1,7 @@
 package io.github.rachmanzz.messaging.utils
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
@@ -24,7 +25,10 @@ class MessagingAsset(context: Context, resource: String) {
     init {
         try {
             rawJsonString = context.assets.open(resource).bufferedReader().use{ it.readText() }
-        } catch (e: IOException) {e.printStackTrace()}
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Log.i("unable", "unable read the doc")
+        }
     }
 
     fun getMessageList (): List<MessageItem>? {
